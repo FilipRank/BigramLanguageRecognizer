@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NGramLanguageRecognizer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/NGramLanguageRecognizer_jar</output-path>
+    <root id="archive" name="NGramLanguageRecognizer.jar">
+      <element id="module-output" name="BigramLanguageRecognizer" />
+    </root>
+  </artifact>
+</component>
