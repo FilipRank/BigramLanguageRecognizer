@@ -8,8 +8,8 @@ public class HelpCommand implements Command {
                 "Here are some useful commands:\n" +
                 "\n" +
                 "start - start the language recognition process\n" +
-                "calculate-probability - calculate the probability of all bigrams in a text" +
-                "calculate-frequency - calculate the bigram frequency of some text\n" +
+                "prob - print the probability of each bigram in a given text\n" +
+                "freq - print the frequency of each bigram in a given text\n" +
                 "help - show this reminder\n" +
                 "ls-languages - show a list of available languages for recognition\n" +
                 "exit - stop the program");

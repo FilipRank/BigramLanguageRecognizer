@@ -16,6 +16,7 @@ public class CalculateFrequencyCommand implements Command {
         Scanner scanner = new Scanner(System.in);
         switch (scanner.nextLine().trim()) {
             case "1":
+                System.out.println("Insert input text:");
                 fromText(scanner.nextLine());
                 break;
             case "2":
@@ -28,7 +29,7 @@ public class CalculateFrequencyCommand implements Command {
 
     private static void fromText(String text) {
         Map<String, Double> frequencies =
-                Ngrams.sortDataDescending(Ngrams.extractBigramFrequency(text));
+                Ngrams.sortDataAscending(Ngrams.extractBigramFrequency(text));
         frequencies.forEach((key, value) -> System.out.println(key + " | " + value));
     }
 
@@ -36,11 +37,8 @@ public class CalculateFrequencyCommand implements Command {
         JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File file = chooser.getSelectedFile();
-        try {
-            Map<String, Double> frequencies =
-                    Ngrams.sortDataDescending(Ngrams.extractBigramFrequency(file));
-            frequencies.forEach((key, value) -> System.out.println(key + " | " + value));
-        }
-        catch (NullPointerException e) {}
+        Map<String, Double> frequencies =
+                Ngrams.sortDataAscending(Ngrams.extractBigramFrequency(file));
+        frequencies.forEach((key, value) -> System.out.println(key + " | " + value));
     }
 }

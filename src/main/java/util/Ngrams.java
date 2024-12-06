@@ -1,12 +1,8 @@
 package util;
 
 import java.io.*;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Ngrams {
 
@@ -24,8 +20,9 @@ public class Ngrams {
         Map<String, Double> bigramFrequency = new HashMap<>();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(file));
-            while (reader.readLine() != null) {
-                String text = reader.readLine().toLowerCase().replaceAll("[^a-z]", "");
+            String text;
+            while ((text = reader.readLine()) != null) {
+                text = text.toLowerCase().replaceAll("[^\\p{L}]", "");
 
                 for (int i = 0; i < text.length() - 1; i++) {
                     String currentBigram = text.substring(i, i + 2);
@@ -45,7 +42,7 @@ public class Ngrams {
     public static Map<String, Double> extractBigramFrequency(String text) {
         Map<String, Double> bigramFrequency = new HashMap<>();
 
-        text = text.toLowerCase().replaceAll("[^a-z]", "");
+        text = text.toLowerCase().replaceAll("[^\\p{L}]", "");
 
         for (int i = 0; i < text.length() - 1; i++) {
             String currentBigram = text.substring(i, i + 2);
@@ -56,6 +53,14 @@ public class Ngrams {
             );
         }
         return bigramFrequency;
+    }
+
+    public static List<Double> getTopXValues
+            (int topX, Map<String, Double> bigrams) {
+        List<Double> values = bigrams.values().stream()
+                .sorted((e1, e2) -> e2.compareTo(e1))
+                .collect(ArrayList::new, List::add, List::addAll);
+        return values.subList(0, topX);
     }
 
     private static Map<String, Double> calculategNgramProbability
@@ -73,10 +78,10 @@ public class Ngrams {
         return hashMap.values().stream().mapToDouble(Double::doubleValue).sum();
     }
 
-    public static Map<String, Double> sortDataDescending(
+    public static Map<String, Double> sortDataAscending(
             Map<String, Double> data) {
 
-        return data.entrySet().stream().sorted((val1, val2) -> val2.getValue().compareTo(val1.getValue()))
+        return data.entrySet().stream().sorted((val1, val2) -> val1.getValue().compareTo(val2.getValue()))
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
                         Map.Entry::getValue,

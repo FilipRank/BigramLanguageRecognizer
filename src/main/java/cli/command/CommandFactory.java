@@ -6,9 +6,9 @@ public class CommandFactory {
         switch (commandName) {
             case "start":
                 return new StartCommand();
-            case "calculate-probability":
+            case "prob":
                 return new CalculateProbabilityCommand();
-            case "calculate-frequency":
+            case "freq":
                 return new CalculateFrequencyCommand();
             case "help":
                 return new HelpCommand();

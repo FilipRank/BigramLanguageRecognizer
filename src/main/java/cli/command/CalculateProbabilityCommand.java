@@ -16,6 +16,7 @@ public class CalculateProbabilityCommand implements Command {
         Scanner scanner = new Scanner(System.in);
         switch (scanner.nextLine().trim()) {
             case "1":
+                System.out.println("Insert input text:");
                 fromText(scanner.nextLine());
                 break;
             case "2":
@@ -28,7 +29,7 @@ public class CalculateProbabilityCommand implements Command {
 
     private static void fromText(String text) {
         Map<String, Double> frequencies =
-                Ngrams.sortDataDescending(Ngrams.extractBigramProbability(text));
+                Ngrams.sortDataAscending(Ngrams.extractBigramProbability(text));
         frequencies.forEach((key, value) -> System.out.println(key + " | " + value));
     }
 
@@ -38,7 +39,7 @@ public class CalculateProbabilityCommand implements Command {
         File file = chooser.getSelectedFile();
         try {
             Map<String, Double> frequencies =
-                    Ngrams.sortDataDescending(Ngrams.extractBigramProbability(file));
+                    Ngrams.sortDataAscending(Ngrams.extractBigramProbability(file));
             frequencies.forEach((key, value) -> System.out.println(key + " | " + value));
         }
         catch (NullPointerException e) {}
