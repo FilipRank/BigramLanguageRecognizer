@@ -40,3 +40,5 @@ build/
 
 ### Mac OS ###
 .DS_Store
+/src/test/
+/src/main/java/Temp.java
