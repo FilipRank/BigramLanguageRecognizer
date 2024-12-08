@@ -22,7 +22,7 @@ inside the CLI.
 First, clone this repository in the destination directory of your
 choice:
 ```
-git clone "github.com/FilipRank/BigramLanguageRecognizer"
+git clone "https://github.com/FilipRank/BigramLanguageRecognizer"
 ```
 Alternatively, you can download the zip file.
 
