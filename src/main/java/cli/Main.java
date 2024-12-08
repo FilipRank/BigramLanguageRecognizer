@@ -17,7 +17,7 @@ public class Main {
 
         // Main loop
         while (true) {
-            System.out.print("\nEnter a command: ");
+            System.out.println("\nEnter a command:");
             String nextCommand = scanner.nextLine()
                     .toLowerCase()
                     .strip();

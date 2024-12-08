@@ -1,10 +1,30 @@
 package util;
 
+import languages.LanguagesEnum;
+
 import java.io.*;
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Ngrams {
+
+    public static String getClosestMatchInDistanceMap(Map<String, Double> distanceMap) {
+        return distanceMap.entrySet().stream()
+                .min(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey)
+                .orElse(null);
+    }
+
+    public static Map<String, Double> getDistanceMapFrom(List<Double> v) {
+        Map<String, List<Double>> valueMap = LanguagesEnum.createValueMap();
+
+        return valueMap.entrySet()
+                .stream()
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        entry -> Vectors.magnitude(Vectors.subtract(entry.getValue(), v))
+                ));
+    }
 
     public static  Map<String, Double> extractBigramProbability(File file) {
         Map<String, Double> bigramFrequency = extractBigramFrequency(file);
