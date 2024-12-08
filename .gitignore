@@ -39,3 +39,5 @@ build/
 .DS_Store
 /src/test/
 /src/main/java/Temp.java
+/src/main/resources/temp/fr.txt
+/out/artifacts/NGramLanguageRecognizer_jar/NGramLanguageRecognizer.jar
