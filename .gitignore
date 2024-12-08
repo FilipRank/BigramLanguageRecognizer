@@ -1,6 +1,3 @@
-# Sample texts
-/src/main/resources/data/texts/english_text.txt
-
 ### ###
 target/
 !.mvn/wrapper/maven-wrapper.jar
